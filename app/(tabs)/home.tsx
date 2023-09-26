@@ -3,12 +3,12 @@ import React from 'react'
 
 type Props = {}
 
-const Splash = (props: Props) => {
+const Home = (props: Props) => {
   return (
     <View>
-      <Text>Splash</Text>
+      <Text>Home</Text>
     </View>
   )
 }
 
-export default Splash
+export default Home

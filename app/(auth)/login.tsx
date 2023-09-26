@@ -4,12 +4,12 @@ import { Link } from 'expo-router'
 
 type Props = {}
 
-const index = (props: Props) => {
+const Page = (props: Props) => {
   return (
     <View className='flex-1 justify-center items-center bg-red-50'>
-      <Link href='(auth)/login'>Get Started</Link>
+      <Link className='font-bold text-2xl' href={"signup"}>Signup</Link>
     </View>
   )
 }
 
-export default index
+export default Page

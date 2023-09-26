@@ -5,7 +5,7 @@ type Props = {}
 
 const index = (props: Props) => {
   return (
-    <Link href={"auth/login"}>Logout</Link>
+    <Link href={"(auth)/login"}>Logout</Link>
   )
 }
 
