@@ -1,7 +1,10 @@
 import React from 'react'
-import { Stack } from 'expo-router'
+import { SplashScreen, Stack } from 'expo-router'
 
 type Props = {}
+
+SplashScreen.preventAutoHideAsync();
+
 
 const Layout = (props: Props) => {
   return (

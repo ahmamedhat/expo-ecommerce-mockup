@@ -8,10 +8,12 @@
     "ios": "expo start --ios"
   },
   "dependencies": {
+    "@expo-google-fonts/poppins": "^0.2.3",
     "expo": "~49.0.11",
     "expo-constants": "~14.4.2",
     "expo-linking": "~5.0.2",
     "expo-router": "^2.0.0",
+    "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
