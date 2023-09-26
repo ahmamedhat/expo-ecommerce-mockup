@@ -1,6 +1,6 @@
-import { View, Text } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
-import { Link } from "expo-router";
+import { router } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
@@ -14,6 +14,8 @@ import {
   Poppins_700Bold,
   Poppins_800ExtraBold,
 } from "@expo-google-fonts/poppins";
+import { Text } from "@components";
+import { FONTS } from "@utils/constants";
 
 type Props = {};
 
@@ -32,7 +34,6 @@ const index = (props: Props) => {
   useEffect(() => {
     async function prepare() {
       try {
-        // Pre-load fonts, make any API calls you need to do here
         await Font.loadAsync(Entypo.font);
         await new Promise((resolve) => setTimeout(resolve, 2000));
         if (!fontsLoaded && !fontError) {
@@ -41,7 +42,6 @@ const index = (props: Props) => {
       } catch (e) {
         console.warn(e);
       } finally {
-        // Tell the application to render
         setAppIsReady(true);
       }
     }
@@ -51,11 +51,6 @@ const index = (props: Props) => {
 
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
       await SplashScreen.hideAsync();
     }
   }, [appIsReady, fontsLoaded, fontError]);
@@ -68,10 +63,12 @@ const index = (props: Props) => {
       onLayout={onLayoutRootView}
       className="flex-1 justify-center items-center bg-red-50"
     >
-      <Link href="(auth)/login">Get Started</Link>
+      <TouchableOpacity onPress={() => router.push('(auth)/login')}>
+        <Text fontWeight={FONTS.light}>Get Started</Text>
+      </TouchableOpacity>
+      
       <Text
-        className="font-light text-lg"
-        style={{ fontFamily: "Poppins_400Regular" }}
+        classNames="font-light text-lg"
       >
         hey this is poppins
       </Text>
