@@ -2,9 +2,12 @@ import { Dimensions } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome"
 
 export const RouteNames = {
-  HOME: "Home",
-  PROFILE: "Profile",
-  NOTIFICATIONS: "Notifications",
+  ROOT: '/',
+  LOGIN: "/(auth)/login",
+  SIGNUP: "/(auth)/signup",
+  HOME: "/home",
+  SETTINGS: "/settings",
+  CATEGORIES: "/categories",
 };
 
 interface Icons {[key: string] : keyof typeof FontAwesome.glyphMap}
@@ -18,7 +21,7 @@ export const IconNames: Icons = {
 
 export enum IconSizes {
   BottomBar = 30,
-  Button = 26,
+  Button = 24,
   Header = 40
 }
 

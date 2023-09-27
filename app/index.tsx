@@ -15,7 +15,7 @@ import {
   Poppins_800ExtraBold,
 } from "@expo-google-fonts/poppins";
 import { Button, ButtonOutline, Text } from "@components";
-import { FONTS, IconNames, IconSizes } from "@utils/constants";
+import { FONTS, IconNames, IconSizes, RouteNames } from "@utils/constants";
 
 type Props = {};
 
@@ -84,13 +84,13 @@ const Page = (props: Props) => {
         </View>
         <Button
           title="Sign In With Password"
-          onPress={() => router.push("(auth)/login")}
+          onPress={() => router.push(RouteNames.LOGIN)}
         />
       </View>
 
       <View className="flex flex-row justify-center mt-auto mb-16">
         <Text classNames="text-gray-500">Don&apos;t have an account?</Text>
-        <TouchableOpacity onPress={() => router.push('(auth)/signup')}>
+        <TouchableOpacity onPress={() => router.push(RouteNames.SIGNUP)}>
           <Text classNames="text-black"> Signup</Text>
         </TouchableOpacity>
       </View>

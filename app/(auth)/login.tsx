@@ -3,19 +3,15 @@ import React, { useState } from "react";
 import { Button, Text, Input } from "@components";
 import { setUser } from "@redux/userSlice";
 import { useAppDispatch } from "@redux/hooks";
-// import { LockIcon, ProfileIcon, RightArrowIcon } from "@icons";
-import { Colors, FONTS, IconNames, IconSizes, Images } from "@utils/constants";
+import { Colors, FONTS, IconNames, IconSizes, Images, RouteNames } from "@utils/constants";
 import { InferType, object, string } from "yup";
-import { Formik, FormikErrors } from "formik";
+import { Formik } from "formik";
 import { router } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { StatusBar } from "expo-status-bar";
-// import { Background } from "@images/background.jpg";
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [errorText, setErrorText] = useState("");
   const [loading, setLoading] = useState(false);
 
   const userSchema = object({
@@ -31,25 +27,13 @@ const LoginScreen = () => {
 
   const onLogin = (
     user: UserSchema,
-    errors?: FormikErrors<UserSchema>,
-    touched?: any
   ) => {
-    if (
-      !touched.username ||
-      (!touched.password &&
-        (user.username.length < 1 || user.password.length < 1))
-    ) {
-      setErrorText("All fields are required");
-      setIsModalVisible(true);
-      return;
-    } else if (errors?.username || errors?.password) {
-      setErrorText(errors?.username ?? (errors?.password as string));
-      setIsModalVisible(true);
-      return;
-    }
     setLoading(true);
     setTimeout(() => {
       dispatch(setUser({ name: user.username }));
+      user.username = ''
+      user.password = ''
+      router.replace('/(app)/home');
       setLoading(false);
     }, 3000);
   };
@@ -110,7 +94,7 @@ const LoginScreen = () => {
               <Button
                 title="LOGIN"
                 onPress={() => {
-                  onLogin(values, errors, touched);
+                  onLogin(values);
                 }}
                 isLoading={loading}
               />
@@ -120,7 +104,7 @@ const LoginScreen = () => {
 
         <View className="flex flex-row justify-center mt-auto mb-16">
           <Text classNames="text-gray-500">Don&apos;t have an account?</Text>
-          <TouchableOpacity onPress={() => router.push("(auth)/signup")}>
+          <TouchableOpacity onPress={() => router.push(RouteNames.SIGNUP)}>
             <Text classNames="text-black"> Signup</Text>
           </TouchableOpacity>
         </View>
