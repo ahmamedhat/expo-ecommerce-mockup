@@ -23,7 +23,7 @@ const Button = ({
     <TouchableOpacity
       disabled={isLoading}
       className={clsx(
-        "bg-primaryButton flex rounded-[8px] items-center justify-center h-[48px] shadow-sm",
+        "bg-primaryButton flex rounded-[8px] items-center justify-center h-12 shadow-sm",
         buttonClassNames
       )}
       onPress={onPress}

@@ -1,4 +1,5 @@
 import { Dimensions } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome"
 
 export const RouteNames = {
   HOME: "Home",
@@ -6,9 +7,23 @@ export const RouteNames = {
   NOTIFICATIONS: "Notifications",
 };
 
+interface Icons {[key: string] : keyof typeof FontAwesome.glyphMap}
+
+export const IconNames: Icons = {
+  Facebook: "facebook",
+  Apple: "apple",
+  Google: 'google',
+  BackArrow: 'angle-left'
+}
+
 export enum IconSizes {
   BottomBar = 30,
-  Button = 20,
+  Button = 26,
+  Header = 40
+}
+
+export const Images = {
+  Login: require('../../assets/images/background.jpg'),
 }
 
 export const Colors = {

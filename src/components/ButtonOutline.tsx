@@ -1,8 +1,7 @@
 import { ActivityIndicator, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { ReactNode } from "react";
 import clsx from "clsx";
 import { Colors, IconSizes } from "@utils/constants";
-import Entypo from "@expo/vector-icons/Entypo";
 import Text from "./Text";
 
 interface IProps {
@@ -11,6 +10,7 @@ interface IProps {
   buttonClassNames?: string;
   textClassNames?: string;
   isLoading?: boolean;
+  children?: ReactNode
 }
 
 const ButtonOutline = ({
@@ -19,12 +19,13 @@ const ButtonOutline = ({
   buttonClassNames,
   textClassNames,
   isLoading,
+  children
 }: IProps) => {
   const renderIconWithText = () => {
     return (
       <View className="flex flex-row">
-        <Entypo name="facebook" size={32} />
-        <Text classNames={clsx("text-lg", textClassNames)}>{title}</Text>
+        {children}
+        <Text classNames={clsx("text-lg ml-3", textClassNames)}>{title}</Text>
       </View>
     );
   };
@@ -33,7 +34,7 @@ const ButtonOutline = ({
     <TouchableOpacity
       disabled={isLoading}
       className={clsx(
-        "border border-primaryButton flex rounded-[8px] items-center justify-center h-[48px]",
+        "border border-gray-300 flex rounded-[8px] items-center justify-center h-[48px] mt-3",
         buttonClassNames
       )}
       onPress={onPress}

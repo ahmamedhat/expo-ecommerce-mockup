@@ -6,10 +6,10 @@
       // this is for src directory
       "@*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      // "@redux/*": ["./src/redux/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@images/*": ["./src/assets/images/*"],
       // "@utils/*": ["./src/utils/*"],
       // "@icons": ["./src/assets/icons"],
-      // "@images": ["./src/assets/images"],
       // "@env": ["./.env"],
     },
   }
