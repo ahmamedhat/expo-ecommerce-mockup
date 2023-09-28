@@ -2,6 +2,8 @@ import React from "react";
 import { SplashScreen, Stack } from "expo-router";
 import { Provider } from "react-redux";
 import { store } from "@redux/store";
+import "intl-pluralrules";
+import "@core/localization/DSCLocalize";
 
 type Props = {};
 

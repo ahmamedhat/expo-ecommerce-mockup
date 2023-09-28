@@ -16,11 +16,18 @@ import {
 } from "@expo-google-fonts/poppins";
 import { Button, ButtonOutline, Text } from "@components";
 import { FONTS, IconNames, IconSizes, RouteNames } from "@utils/constants";
+import { useTranslation } from "react-i18next";
+import { getItem, storage } from "@core/storage";
+import { useAppDispatch } from "@redux/hooks";
+import { setUser } from "@redux/userSlice";
 
 type Props = {};
 
 const Page = (props: Props) => {
   const [appIsReady, setAppIsReady] = useState(false);
+
+  const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   let [fontsLoaded, fontError] = useFonts({
     Poppins_100Thin,
@@ -61,7 +68,7 @@ const Page = (props: Props) => {
     <View onLayout={onLayoutRootView} className="flex-1">
       <View className="h-[28vh] bg-gray-500 p-4">
         <Text fontWeight={FONTS.bold} classNames="text-4xl text-white mt-auto">
-          Lets get you in
+          {t("common:login_screen_welcome")}
         </Text>
       </View>
 

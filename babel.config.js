@@ -16,6 +16,7 @@ module.exports = function (api) {
             "@utils": "./src/utils",
             "@redux": "./src/redux",
             "@images": "./src/assets/images",
+            "@core": "./src/core",
             // "@icons": "./src/assets/icons/index",
           },
         },

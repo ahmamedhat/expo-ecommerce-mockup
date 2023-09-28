@@ -8,6 +8,7 @@
       "@components/*": ["./src/components/*"],
       "@redux/*": ["./src/redux/*"],
       "@images/*": ["./src/assets/images/*"],
+      "@core/*": ["./src/core/*"],
       // "@utils/*": ["./src/utils/*"],
       // "@icons": ["./src/assets/icons"],
       // "@env": ["./.env"],

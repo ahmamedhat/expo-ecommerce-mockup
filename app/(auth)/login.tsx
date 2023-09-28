@@ -16,6 +16,7 @@ import { Formik } from "formik";
 import { router } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { StatusBar } from "expo-status-bar";
+import { setItem, storage } from "@core/storage";
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +36,9 @@ const LoginScreen = () => {
   const onLogin = (user: UserSchema) => {
     setLoading(true);
     setTimeout(() => {
+      setItem("user", user);
       dispatch(setUser({ name: user.username }));
+
       user.username = "";
       user.password = "";
       router.back();
