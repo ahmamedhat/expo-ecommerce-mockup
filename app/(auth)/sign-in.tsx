@@ -9,6 +9,7 @@ import {
   IconNames,
   IconSizes,
   Images,
+  MMKV_STORAGE_KEYS,
   RouteNames,
 } from "@utils/constants";
 import { InferType, object, string } from "yup";
@@ -16,7 +17,7 @@ import { Formik } from "formik";
 import { router } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { StatusBar } from "expo-status-bar";
-import { setItem, storage } from "@core/storage";
+import { setItem } from "@core/storage";
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ const LoginScreen = () => {
   const onLogin = (user: UserSchema) => {
     setLoading(true);
     setTimeout(() => {
-      setItem("user", user);
+      setItem(MMKV_STORAGE_KEYS.user, user);
       dispatch(setUser({ name: user.username }));
 
       user.username = "";

@@ -15,19 +15,20 @@ import {
   Poppins_800ExtraBold,
 } from "@expo-google-fonts/poppins";
 import { Button, ButtonOutline, Text } from "@components";
-import { FONTS, IconNames, IconSizes, RouteNames } from "@utils/constants";
+import {
+  FONTS,
+  IconNames,
+  IconSizes,
+  RouteNames,
+  translations,
+} from "@utils/constants";
 import { useTranslation } from "react-i18next";
-import { getItem, storage } from "@core/storage";
-import { useAppDispatch } from "@redux/hooks";
-import { setUser } from "@redux/userSlice";
 
 type Props = {};
 
 const Page = (props: Props) => {
   const [appIsReady, setAppIsReady] = useState(false);
-
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   let [fontsLoaded, fontError] = useFonts({
     Poppins_100Thin,
@@ -68,18 +69,27 @@ const Page = (props: Props) => {
     <View onLayout={onLayoutRootView} className="flex-1">
       <View className="h-[28vh] bg-gray-500 p-4">
         <Text fontWeight={FONTS.bold} classNames="text-4xl text-white mt-auto">
-          {t("common:login_screen_welcome")}
+          {t(translations.landing_screen_welcome)}
         </Text>
       </View>
 
       <View className="p-4 mt-4">
-        <ButtonOutline title="Continue With Facebook" onPress={() => {}}>
+        <ButtonOutline
+          title={t(translations.login_with_facebook)}
+          onPress={() => {}}
+        >
           <FontAwesome name={IconNames.Facebook} size={IconSizes.Button} />
         </ButtonOutline>
-        <ButtonOutline title="Continue With Google" onPress={() => {}}>
+        <ButtonOutline
+          title={t(translations.login_with_google)}
+          onPress={() => {}}
+        >
           <FontAwesome name={IconNames.Google} size={IconSizes.Button} />
         </ButtonOutline>
-        <ButtonOutline title="Continue With Apple" onPress={() => {}}>
+        <ButtonOutline
+          title={t(translations.login_with_apple)}
+          onPress={() => {}}
+        >
           <FontAwesome name={IconNames.Apple} size={IconSizes.Button} />
         </ButtonOutline>
 
@@ -89,15 +99,17 @@ const Page = (props: Props) => {
           <View className="h-[2px] bg-gray-300 flex-grow" />
         </View>
         <Button
-          title="Sign In With Password"
+          title={t(translations.landing_screen_password_signin)}
           onPress={() => router.push(RouteNames.LOGIN)}
         />
       </View>
 
       <View className="flex flex-row justify-center mt-auto mb-16">
-        <Text classNames="text-gray-500">Don&apos;t have an account?</Text>
+        <Text classNames="text-gray-500">
+          {t(translations.landing_screen_no_account_yet)}
+        </Text>
         <TouchableOpacity onPress={() => router.push(RouteNames.SIGNUP)}>
-          <Text classNames="text-black"> Signup</Text>
+          <Text classNames="text-black"> {t(translations.signup)}</Text>
         </TouchableOpacity>
       </View>
 

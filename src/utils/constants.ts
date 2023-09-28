@@ -3,16 +3,16 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export const RouteNames = {
   ROOT: "/",
-  LOGIN: "/(auth)/login",
-  SIGNUP: "/(auth)/signup",
+  LOGIN: "/(auth)/sign-in",
+  SIGNUP: "/(auth)/sign-up",
   HOME: "/home",
   SETTINGS: "/settings",
   CART: "/cart",
 };
 
 export const ScreenNames = {
-  LOGIN: "login",
-  SIGNUP: "signup",
+  LOGIN: "sign-in",
+  SIGNUP: "sign-up",
   HOME: "home",
   SETTINGS: "settings",
   CART: "cart",
@@ -78,3 +78,25 @@ export enum DeviceScreen {
   Height = Dimensions.get("window").height,
   Width = Dimensions.get("window").width,
 }
+
+export const LANGUAGES = {
+  english: "en",
+  arabic: "ar",
+};
+
+export const MMKV_STORAGE_KEYS = {
+  language: "user-language",
+  user: "user",
+};
+
+export const translations = {
+  landing_screen_welcome: "common:landing_screen_welcome",
+  login_with_facebook: "common:login_with_facebook",
+  login_with_google: "common:login_with_google",
+  login_with_apple: "common:login_with_apple",
+  or: "common:or",
+  landing_screen_password_signin: "common:landing_screen_password_signin",
+  landing_screen_no_account_yet: "common:landing_screen_no_account_yet",
+  signup: "common:signup",
+  logout: "common:logout",
+};
