@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import { Button, Text, Input } from "@components";
 import { setUser } from "@redux/userSlice";
 import { useAppDispatch } from "@redux/hooks";
-import { Colors, FONTS, IconNames, IconSizes, Images, RouteNames } from "@utils/constants";
+import {
+  Colors,
+  FONTS,
+  IconNames,
+  IconSizes,
+  Images,
+  RouteNames,
+} from "@utils/constants";
 import { InferType, object, string } from "yup";
 import { Formik } from "formik";
 import { router } from "expo-router";
@@ -25,15 +32,14 @@ const LoginScreen = () => {
 
   type UserSchema = InferType<typeof userSchema>;
 
-  const onLogin = (
-    user: UserSchema,
-  ) => {
+  const onLogin = (user: UserSchema) => {
     setLoading(true);
     setTimeout(() => {
       dispatch(setUser({ name: user.username }));
-      user.username = ''
-      user.password = ''
-      router.replace('/(app)/home');
+      user.username = "";
+      user.password = "";
+      router.back();
+      router.replace(RouteNames.HOME);
       setLoading(false);
     }, 3000);
   };
@@ -47,12 +53,16 @@ const LoginScreen = () => {
           resizeMode="cover"
         />
         <View className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50" />
-        <TouchableOpacity onPress={() => router.back()} className="absolute top-16 left-4">
+        <TouchableOpacity
+          onPress={() => {
+            router.back();
+          }}
+          className="absolute top-16 left-4"
+        >
           <FontAwesome
             name={IconNames.BackArrow}
             size={IconSizes.Header}
             color={Colors.PrimaryBackground}
-            onPress={() => router.back()}
           />
         </TouchableOpacity>
         <Text
@@ -78,7 +88,7 @@ const LoginScreen = () => {
                 secureTextEntry={false}
                 placeholder="Username"
               >
-                <FontAwesome name="user" size={IconSizes.Button} />
+                <FontAwesome name={IconNames.User} size={IconSizes.Button} />
               </Input>
 
               <Input
@@ -89,7 +99,10 @@ const LoginScreen = () => {
                 onBlur={handleBlur("password")}
                 placeholder="Password"
               >
-                <FontAwesome name="lock" size={IconSizes.Button} />
+                <FontAwesome
+                  name={IconNames.Password}
+                  size={IconSizes.Button}
+                />
               </Input>
               <Button
                 title="LOGIN"

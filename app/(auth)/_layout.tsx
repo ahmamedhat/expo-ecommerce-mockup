@@ -1,20 +1,16 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
 import { useAppSelector } from "@redux/hooks";
+import { ScreenNames } from "@utils/constants";
 
 type Props = {};
 
 const Layout = (props: Props) => {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.user);
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      {/* {user && (
-        // <Stack.Group>
-        //   <Stack.Screen name="login" />
-        //   <Stack.Screen name="signup" />
-        // </Stack.Group>
-      )} */}
+      <Stack.Screen name={ScreenNames.LOGIN} />
+      <Stack.Screen name={ScreenNames.SIGNUP} />
     </Stack>
   );
 };

@@ -20,7 +20,7 @@ export const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
-    deleteUser: state => {
+    deleteUser: (state) => {
       state.user = null;
     },
   },

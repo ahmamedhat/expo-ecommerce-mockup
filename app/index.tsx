@@ -35,7 +35,6 @@ const Page = (props: Props) => {
     async function prepare() {
       try {
         await Font.loadAsync(FontAwesome.font);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
         if (!fontsLoaded && !fontError) {
           return;
         }

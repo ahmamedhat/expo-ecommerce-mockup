@@ -1,33 +1,47 @@
 import { Dimensions } from "react-native";
-import FontAwesome from "@expo/vector-icons/FontAwesome"
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export const RouteNames = {
-  ROOT: '/',
+  ROOT: "/",
   LOGIN: "/(auth)/login",
   SIGNUP: "/(auth)/signup",
   HOME: "/home",
   SETTINGS: "/settings",
-  CATEGORIES: "/categories",
+  CART: "/cart",
 };
 
-interface Icons {[key: string] : keyof typeof FontAwesome.glyphMap}
+export const ScreenNames = {
+  LOGIN: "login",
+  SIGNUP: "signup",
+  HOME: "home",
+  SETTINGS: "settings",
+  CART: "cart",
+};
+
+interface Icons {
+  [key: string]: keyof typeof FontAwesome.glyphMap;
+}
 
 export const IconNames: Icons = {
+  Password: "lock",
   Facebook: "facebook",
   Apple: "apple",
-  Google: 'google',
-  BackArrow: 'angle-left'
-}
+  Google: "google",
+  BackArrow: "angle-left",
+  Home: "home",
+  Cart: "shopping-cart",
+  User: "user",
+};
 
 export enum IconSizes {
   BottomBar = 30,
   Button = 24,
-  Header = 40
+  Header = 40,
 }
 
 export const Images = {
-  Login: require('../../assets/images/background.jpg'),
-}
+  Login: require("../../assets/images/background.jpg"),
+};
 
 export const Colors = {
   PrimaryBackground: "#FFFFFF",
@@ -39,14 +53,14 @@ export const Colors = {
   DangerButton: "",
   DisabledButton: "",
 
-  PrimaryText: "white",
+  PrimaryText: "#FFFFFF",
   SecondaryText: "#A9A9A9",
   AccentText: "",
 
-  PrimaryIcon: "#2D2D2D",
-  SecondaryIcon: "white",
+  PrimaryIcon: "#FF4C3B",
+  SecondaryIcon: "#FFFFFF",
 
-  ButtonIcon: "white",
+  ButtonIcon: "#FFFFFF",
 
   Danger: "#bb2124",
 };
