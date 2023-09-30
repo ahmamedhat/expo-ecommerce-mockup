@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { I18nManager, TouchableOpacity, View } from "react-native";
 import BottomBarIcon from "./BottomBarIcon";
 import { DeviceScreen } from "@utils/constants";
 import Animated, {
@@ -11,14 +11,18 @@ function BottomBar({ state, descriptors, navigation }: any) {
   const routesCount = state.routes.length;
   const Width = DeviceScreen.Width - 20;
   const IndicatorWidth = Width / routesCount;
+  const rtl = I18nManager.isRTL;
 
   const translateAnimation = useAnimatedStyle(() => {
     return {
       transform: [
         {
-          translateX: withTiming(IndicatorWidth * state.index, {
-            duration: 200,
-          }),
+          translateX: withTiming(
+            IndicatorWidth * (rtl ? -state.index : state.index),
+            {
+              duration: 200,
+            }
+          ),
         },
       ],
     };
