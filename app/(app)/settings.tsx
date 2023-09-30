@@ -1,10 +1,10 @@
-import { TouchableOpacity, View } from "react-native";
+import { LogBox, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { Button, Text } from "@components";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { deleteUser } from "@redux/userSlice";
 import { router } from "expo-router";
-import { storage } from "@core/storage";
+import { removeItem, storage } from "@core/storage";
 import { LANGUAGES, MMKV_STORAGE_KEYS, translations } from "@utils/constants";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "@utils/helpers";
@@ -24,6 +24,7 @@ const Settings = (props: Props) => {
     setLoading(true);
 
     setTimeout(() => {
+      removeItem(MMKV_STORAGE_KEYS.user);
       dispatch(deleteUser());
       router.replace("/");
       setLoading(false);
@@ -32,7 +33,7 @@ const Settings = (props: Props) => {
 
   return (
     <View className="flex-1 justify-center p-4">
-      <Text classNames="text-xl mb-4">Hey {user?.name} 👋🏻</Text>
+      <Text classNames="text-xl mb-4">Hey {user?.username} 👋🏻</Text>
       <TouchableOpacity
         className="mb-4"
         onPress={() => changeLanguage(toggledLanguage)}

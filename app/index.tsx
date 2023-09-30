@@ -19,14 +19,21 @@ import {
   FONTS,
   IconNames,
   IconSizes,
+  MMKV_STORAGE_KEYS,
   RouteNames,
   translations,
 } from "@utils/constants";
 import { useTranslation } from "react-i18next";
+import { getItem } from "@core/storage";
+import { useAppDispatch } from "@redux/hooks";
+import { setUser } from "@redux/userSlice";
 
 type Props = {};
 
 const Page = (props: Props) => {
+  const user = getItem(MMKV_STORAGE_KEYS.user) as User;
+  const dispatch = useAppDispatch();
+
   const [appIsReady, setAppIsReady] = useState(false);
   const { t } = useTranslation();
 
@@ -58,6 +65,10 @@ const Page = (props: Props) => {
 
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
+      if (user) {
+        dispatch(setUser(user));
+        router.replace("/(app)/home");
+      }
       await SplashScreen.hideAsync();
     }
   }, [appIsReady, fontsLoaded, fontError]);
@@ -68,7 +79,10 @@ const Page = (props: Props) => {
   return (
     <View onLayout={onLayoutRootView} className="flex-1">
       <View className="h-[28vh] bg-gray-500 p-4">
-        <Text fontWeight={FONTS.bold} classNames="text-4xl text-white mt-auto">
+        <Text
+          fontWeight={FONTS.bold}
+          classNames="text-4xl text-white mt-auto mr-auto"
+        >
           {t(translations.landing_screen_welcome)}
         </Text>
       </View>

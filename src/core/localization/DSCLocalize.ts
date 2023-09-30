@@ -15,8 +15,6 @@ const LANGUAGE_DETECTOR = {
   async: true,
   detect: (callback: any) => {
     const language = storage.getString(MMKV_STORAGE_KEYS.language);
-    console.log("language heee", language);
-
     if (!language) {
       storage.set(MMKV_STORAGE_KEYS.language, LANGUAGES.english);
       callback(LANGUAGES.english);
