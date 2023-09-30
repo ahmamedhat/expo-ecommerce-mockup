@@ -38,7 +38,7 @@ const LoginScreen = () => {
     setLoading(true);
     setTimeout(() => {
       setItem(MMKV_STORAGE_KEYS.user, user);
-      dispatch(setUser({ name: user.username }));
+      dispatch(setUser({ username: user.username, password: user.password }));
 
       user.username = "";
       user.password = "";
